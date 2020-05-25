@@ -1,9 +1,11 @@
 package com.example.simpleyelp
 
 import android.content.Context
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,6 +62,27 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG, "No Network Connection")
             Log.d(TAG, "We were unable to connect to the internet, Please try again later.")
             println("We were unable to connect to the internet, Please try again later.")
+                val dialogBuilder = AlertDialog.Builder(this)
+
+                // set message of alert dialog
+                dialogBuilder.setMessage("Unable to connect to the internet, Do you want to close this application ?")
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Close", DialogInterface.OnClickListener {
+                            dialog, id -> finish()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                            dialog, id -> dialog.cancel()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle("Network Connectivity Issue")
+                // show alert dialog
+                alert.show()
         }
 
         //execute as soon as network request returns
