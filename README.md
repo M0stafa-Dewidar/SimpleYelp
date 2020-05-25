@@ -1,5 +1,5 @@
 # SimpleYelp
-This is a very simple Android app built using the# Yelp Clone 
+This is a very simple Android app built using the Yelp API
 
 ## *Mostafa Dewidar*
 
